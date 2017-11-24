@@ -10,30 +10,30 @@
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:config/jdbc-basic.properties" />
+        <property name="location" value="classpath:generator.properties" />
     </bean>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close">
-        <property name="driverClassName" value="${driver}" />
-        <property name="url" value="${url}" />
-        <property name="username" value="${username}" />
-        <property name="password" value="${password}" />
+        <property name="driverClassName" value="${generator.jdbc.driver}" />
+        <property name="url" value="${generator.jdbc.url}" />
+        <property name="username" value="${generator.jdbc.username}" />
+        <property name="password" value="${generator.jdbc.password}" />
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="${initialSize}"></property>
+        <property name="initialSize" value="${generator.jdbc.initialSize}"></property>
         <!-- 连接池最大数量 -->
-        <property name="maxActive" value="${maxActive}"></property>
+        <property name="maxActive" value="${generator.jdbc.maxActive}"></property>
         <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${minIdle}"></property>
+        <property name="minIdle" value="${generator.jdbc.minIdle}"></property>
         <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${maxWait}"></property>
+        <property name="maxWait" value="${generator.jdbc.maxWait}"></property>
     </bean>
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描mapping.xml文件 -->
-        <property name="mapperLocations" value="classpath:win/likie/mvc/mapper/*.xml"></property>
+        <property name="mapperLocations" value="classpath:com/whh/lazy/login/mapper/*.xml"></property>
     </bean>
 
     <!--配置MapperScannerConfigurer-->
@@ -42,7 +42,7 @@
             注入需要扫描的包，它会自动扫描这个包下的接口，
             然后实现这些接口，并且会实例化这些接口的实现类
          -->
-        <property name="basePackage" value="win.likie.mvc.mapper"></property>
+        <property name="basePackage" value="com.whh.lazy.login.mapper"></property>
     </bean>
 
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
