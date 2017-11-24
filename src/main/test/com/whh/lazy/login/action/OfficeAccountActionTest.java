@@ -12,7 +12,6 @@ public class OfficeAccountActionTest extends BaseTest {
     @Resource
     OfficeAccountAction officeAccountAction;
 
-
     @Test
     public void testGetOfficeAccount() throws Exception {
         System.out.println(officeAccountAction.getOfficeAccount());

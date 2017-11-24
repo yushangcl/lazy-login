@@ -1,6 +1,6 @@
 package com.whh.lazy.login.manager.impl;
 
-import com.whh.common.mybatis.base.BaseManagerImpl;
+import com.whh.lazy.login.common.base.BaseManagerImpl;
 import com.whh.lazy.login.mapper.BuOfficeAccountDOMapper;
 import com.whh.lazy.login.model.BuOfficeAccount;
 import com.whh.lazy.login.model.BuOfficeAccountDO;
